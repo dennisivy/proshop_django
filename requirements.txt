@@ -1,7 +1,7 @@
 asgiref==3.8.1
 boto3==1.34.144
 botocore==1.34.144
-Django==5.0.7
+Django==4.2.16
 django-cors-headers==4.4.0
 django-filter==24.2
 django-storages==1.14.4
@@ -11,9 +11,9 @@ jmespath==1.0.1
 pillow==10.4.0
 psycopg2-binary==2.9.9
 PyJWT==2.8.0
-python-dateutil==2.9.0.post0
+python-dateutil==2.1
 s3transfer==0.10.2
 six==1.16.0
 sqlparse==0.5.1
-urllib3==2.2.2
+urllib3==1.25.4
 whitenoise==6.7.0
