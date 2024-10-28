@@ -1,71 +1,28 @@
-import React from 'react'
+import React from "react";
 
-function Rating({ value, text, color }) {
-    return (
-        <div className="rating">
-            <span>
-                <i style={{ color }} className={
-                    value >= 1
-                        ? 'fas fa-star'
-                        : value >= 0.5
-                            ? 'fas fa-star-half-alt'
-                            : 'far fa-star'
-                }>
+export default function Rating({ value, text, color }) {
+    
+  const stars = [];
+  for (let i = 0; i < 5; i++) {
+    if (value >= i + 1) {
+      stars.push(<i key={i} style={{ color }} className="fas fa-star"></i>);
+    } else if (value >= i + 0.5) {
+      stars.push(
+        <i
+          key={i}
+          style={{ color }}
+          className="fas fa-star-half-alt"
+        ></i>
+      );
+    } else {
+      stars.push(<i key={i} style={{ color }} className="far fa-star"></i>);
+    }
+  }
 
-                </i>
-            </span>
-
-            <span>
-                <i style={{ color }} className={
-                    value >= 2
-                        ? 'fas fa-star'
-                        : value >= 1.5
-                            ? 'fas fa-star-half-alt'
-                            : 'far fa-star'
-                }>
-
-                </i>
-            </span>
-
-            <span>
-                <i style={{ color }} className={
-                    value >= 3
-                        ? 'fas fa-star'
-                        : value >= 2.5
-                            ? 'fas fa-star-half-alt'
-                            : 'far fa-star'
-                }>
-
-                </i>
-            </span>
-
-            <span>
-                <i style={{ color }} className={
-                    value >= 4
-                        ? 'fas fa-star'
-                        : value >= 3.5
-                            ? 'fas fa-star-half-alt'
-                            : 'far fa-star'
-                }>
-
-                </i>
-            </span>
-
-            <span>
-                <i style={{ color }} className={
-                    value >= 5
-                        ? 'fas fa-star'
-                        : value >= 4.5
-                            ? 'fas fa-star-half-alt'
-                            : 'far fa-star'
-                }>
-
-                </i>
-            </span>
-
-            <span>{text && text}</span>
-        </div>
-    )
+  return (
+    <div className="rating">
+      {stars}
+      <span style={{ paddingLeft: "10px" }}>{text && text}</span>
+    </div>
+  );
 }
-
-export default Rating
