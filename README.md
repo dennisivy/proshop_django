@@ -1,4 +1,4 @@
-# PropShop Ecommerce Website With Django + React
+# ProShop Ecommerce Website With Django + React
 
 Live Demo can be viewed at https://www.buildproshop.com/
 
