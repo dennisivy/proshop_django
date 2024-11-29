@@ -22,11 +22,6 @@ function PlaceOrderScreen({ history }) {
 
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
 
-
-    if (!cart.paymentMethod) {
-        history.push('/payment')
-    }
-
     useEffect(() => {
         if (success) {
             history.push(`/order/${order._id}`)
