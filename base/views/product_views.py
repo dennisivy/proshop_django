@@ -13,9 +13,7 @@ from rest_framework import status
 
 @api_view(['GET'])
 def getProducts(request):
-    query = request.query_params.get('keyword')
-    if query == None:
-        query = ''
+    query = request.query_params.get('keyword') or ''
 
     products = Product.objects.filter(
         name__icontains=query).order_by('-createdAt')
