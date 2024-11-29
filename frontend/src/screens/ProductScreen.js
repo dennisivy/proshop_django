@@ -29,10 +29,10 @@ function ProductScreen({ match, history }) {
     } = productReviewCreate
 
     useEffect(() => {
+        dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
         if (successProductReview) {
             setRating(0)
             setComment('')
-            dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
         }
 
         dispatch(listProductDetails(match.params.id))
