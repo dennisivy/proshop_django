@@ -1,5 +1,9 @@
 # PropShop Ecommerce Website With Django + React
 
+## Description
+
+ProShop is a full-stack eCommerce platform built with Django REST Framework and React/Redux. This project demonstrates a complete online shopping experience with features like product browsing, shopping cart functionality, user authentication, order management, and payment processing through PayPal integration. The application showcases modern web development practices including a RESTful API backend, responsive frontend design, and comprehensive admin capabilities for managing products, orders, and users.
+
 Live Demo can be viewed at https://www.buildproshop.com/
 
 This project is from my Django + React collaboration wih Brad Traversy. Full Course: https://www.udemy.com/course/django-with-react-an-ecommerce-website/?couponCode=387F19CD4087385E87C1
