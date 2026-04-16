@@ -7,6 +7,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { listProductDetails, createProductReview } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
+import { addToWishlist, removeFromWishlist, checkWishlistStatus } from '../actions/wishlistActions'
 
 function ProductScreen({ match, history }) {
     const [qty, setQty] = useState(1)
@@ -28,6 +29,15 @@ function ProductScreen({ match, history }) {
         success: successProductReview,
     } = productReviewCreate
 
+    const wishlistCheck = useSelector(state => state.wishlistCheck)
+    const { loading: loadingWishlistCheck, isInWishlist } = wishlistCheck
+
+    const wishlistAdd = useSelector(state => state.wishlistAdd)
+    const { success: successAddWishlist, error: errorAddWishlist } = wishlistAdd
+
+    const wishlistRemove = useSelector(state => state.wishlistRemove)
+    const { success: successRemoveWishlist, error: errorRemoveWishlist } = wishlistRemove
+
     useEffect(() => {
         if (successProductReview) {
             setRating(0)
@@ -37,10 +47,22 @@ function ProductScreen({ match, history }) {
 
         dispatch(listProductDetails(match.params.id))
 
-    }, [dispatch, match, successProductReview])
+        if (userInfo) {
+            dispatch(checkWishlistStatus(match.params.id))
+        }
+
+    }, [dispatch, match, successProductReview, successAddWishlist, successRemoveWishlist, userInfo])
 
     const addToCartHandler = () => {
         history.push(`/cart/${match.params.id}?qty=${qty}`)
+    }
+
+    const wishlistHandler = () => {
+        if (isInWishlist) {
+            dispatch(removeFromWishlist(match.params.id))
+        } else {
+            dispatch(addToWishlist(match.params.id))
+        }
     }
 
     const submitHandler = (e) => {
@@ -134,6 +156,20 @@ function ProductScreen({ match, history }) {
                                                 </ListGroup.Item>
                                             )}
 
+
+                                            {userInfo && (
+                                                <ListGroup.Item>
+                                                    <Button
+                                                        onClick={wishlistHandler}
+                                                        className='btn-block'
+                                                        variant={isInWishlist ? 'danger' : 'outline-danger'}
+                                                        type='button'>
+                                                        <i className={`fas ${isInWishlist ? 'fa-heart' : 'fa-heart-o'}`}></i>
+                                                        {' '}
+                                                        {isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
+                                                    </Button>
+                                                </ListGroup.Item>
+                                            )}
 
                                             <ListGroup.Item>
                                                 <Button

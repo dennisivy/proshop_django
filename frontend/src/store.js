@@ -32,6 +32,13 @@ import {
     orderDeliverReducer,
 } from './reducers/orderReducers'
 
+import {
+    wishlistListReducer,
+    wishlistAddReducer,
+    wishlistRemoveReducer,
+    wishlistCheckReducer,
+} from './reducers/wishlistReducers'
+
 const reducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
@@ -56,6 +63,11 @@ const reducer = combineReducers({
     orderListMy: orderListMyReducer,
     orderList: orderListReducer,
     orderDeliver: orderDeliverReducer,
+
+    wishlistList: wishlistListReducer,
+    wishlistAdd: wishlistAddReducer,
+    wishlistRemove: wishlistRemoveReducer,
+    wishlistCheck: wishlistCheckReducer,
 })
 
 
